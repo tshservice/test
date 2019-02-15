@@ -29,7 +29,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("Servicing request.")
 	fmt.Fprintf(w, resp)
-        fmt.Fprintf(w, "Version: 1.0.\n")
+        fmt.Fprintf(w, "Version: 1.1.\n")
         fmt.Fprintf(w, "Hostname: %s\n", host)
         addrs, _ := net.LookupIP(host)
         for _, addr := range addrs {
