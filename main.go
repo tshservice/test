@@ -23,7 +23,12 @@ func main() {
 func hello(w http.ResponseWriter, r *http.Request) {
         log.Printf("Serving request: %s", r.URL.Path)
         host, _ := os.Hostname()
-        fmt.Fprintf(w, "Hello, world!\n")
+	resp := os.Getenv("RESP")
+	if len(resp) == 0 {
+		resp = "Hello, world!\n"
+	}
+	fmt.Println("Servicing request.")
+	fmt.Fprintf(w, resp)
         fmt.Fprintf(w, "Version: 1.0.\n")
         fmt.Fprintf(w, "Hostname: %s\n", host)
         addrs, _ := net.LookupIP(host)
